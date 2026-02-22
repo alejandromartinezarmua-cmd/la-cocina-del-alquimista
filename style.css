@@ -348,7 +348,7 @@ body {
 }
 
 .product-card:hover {
-  transform: perspective(var(--perspective)) translateZ(30px) rotateY(8deg);
+  transform:translateZ(30px) rotateY(8deg);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
 }
 
