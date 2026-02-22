@@ -318,25 +318,49 @@ function initNavigation() {
 
 function initCardTilt() {
   const cards = document.querySelectorAll('.product-card');
-  
+
   cards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
+    let rect = null;
+    let rafId = null;
+    let mouseX = 0;
+    let mouseY = 0;
+
+    function update() {
+      if (!rect) return;
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
-      
-      const rotateX = (y - centerY) / 25;
-      const rotateY = (centerX - x) / 25;
-      
+
+      const rotateX = (mouseY - centerY) / 20;
+      const rotateY = (centerX - mouseX) / 20;
+
       card.style.transform = `perspective(1400px) translateZ(30px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
-    
-    card.addEventListener('mouseleave', () => {
+      rafId = null;
+    }
+
+    function onPointerMove(e) {
+      rect = rect || card.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+
+      if (!rafId) rafId = requestAnimationFrame(update);
+    }
+
+    function onPointerEnter() {
+      rect = card.getBoundingClientRect();
+      card.style.willChange = 'transform';
+    }
+
+    function onPointerLeave() {
+      if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+      rect = null;
       card.style.transform = 'perspective(1400px) translateZ(0) rotateX(0) rotateY(0)';
-    });
+      card.style.willChange = 'auto';
+    }
+
+    card.addEventListener('pointermove', onPointerMove);
+    card.addEventListener('pointerenter', onPointerEnter);
+    card.addEventListener('pointerleave', onPointerLeave);
+    card.addEventListener('pointercancel', onPointerLeave);
   });
 }
 
