@@ -8,7 +8,7 @@
   <meta name="description"
     content="La Cocina del Alquimista - Tartas, tortas, bombs y más. Sabores invocados desde lo desconocido">
 
-  <!-- Open Graph / Meta Tags Sociales -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://lacocinadelalquimista.github.io/la-cocina-del-alquimista/">
   <meta property="og:title" content="La Cocina del Alquimista">
@@ -17,11 +17,9 @@
 
   <!-- Twitter Cards -->
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://lacocinadelalquimista.github.io/la-cocina-del-alquimista/">
   <meta property="twitter:title" content="La Cocina del Alquimista">
   <meta property="twitter:description" content="Tartas, tortas, bombs y más. Sabores invocados desde lo desconocido.">
   <meta property="twitter:image" content="https://lacocinadelalquimista.github.io/la-cocina-del-alquimista/logo.png">
-
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,12 +28,11 @@
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap"
     rel="stylesheet">
 
-  <!-- Styles -->
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <!-- Canvas Background for Particles -->
+  <!-- Canvas Background -->
   <canvas id="particles-canvas"></canvas>
 
   <!-- WhatsApp Float Button -->
@@ -47,31 +44,13 @@
     </svg>
   </a>
 
-
   <!-- Navigation -->
   <header class="navbar">
     <div class="nav-container">
-      <!-- 1. Menú hamburguesa a la Izquierda -->
-      <button class="nav-toggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <!-- 2. Logo al medio -->
       <a href="#home" class="logo">
         <span class="logo-icon">✦</span>
         <span class="logo-text">La Cocina del Alquimista</span>
       </a>
-      <nav class="nav-menu">
-        <a href="#home" class="nav-link">Inicio</a>
-        <a href="#tartas" class="nav-link">Tartas</a>
-        <a href="#hechizos" class="nav-link">Hechizos</a>
-        <a href="#tortas" class="nav-link">Tortas</a>
-        <a href="#bombas" class="nav-link">Bombs</a>
-        <a href="#raciones" class="nav-link">Raciones</a>
-        <a href="#kits" class="nav-link">Kits</a>
-      </nav>
     </div>
   </header>
 
@@ -80,74 +59,28 @@
     <div class="hero-content">
       <div class="hero-subtitle reveal">Sabores invocados desde lo desconocido</div>
       <h1 class="hero-title reveal">La Cocina del Alquimista</h1>
-      <a href="#tartas" class="hero-btn reveal">Explorar el Grimorio</a>
+      <a href="#catalogo" class="hero-btn reveal">Explorar el Grimorio</a>
     </div>
     <div class="hero-scroll-indicator">
       <span></span>
     </div>
   </section>
 
-  <!-- Main Content -->
-  <main class="main-content">
-    <!-- Tartas Section -->
-    <section id="tartas" class="products-section">
-      <div class="section-header">
-        <span class="section-icon">◈</span>
-        <h2 class="section-title">Tartas</h2>
-        <p class="section-subtitle">Delicias crujientes del reino</p>
-      </div>
-      <div class="products-grid" id="tartas-grid"></div>
-    </section>
+  <!-- Category Filter (Touch-Slider) -->
+  <nav id="category-filter" class="category-slider">
+    <button class="filter-btn active" data-filter="all">Todos</button>
+    <button class="filter-btn" data-filter="panes">Panes</button>
+    <button class="filter-btn" data-filter="tartas">Tartas</button>
+    <button class="filter-btn" data-filter="pascua">Pascua</button>
+  </nav>
 
-    <!-- Hechizos Section -->
-    <section id="hechizos" class="products-section">
-      <div class="section-header">
-        <span class="section-icon">⚗</span>
-        <h2 class="section-title">Hechizos del Alquimista</h2>
-        <p class="section-subtitle">Poderes oscuros en forma de postre</p>
+  <!-- Catalog -->
+  <main class="main-content" id="catalogo">
+    <div class="catalog-container">
+      <div class="products-grid" id="catalog-grid">
+        <!-- Generado por JS -->
       </div>
-      <div class="products-grid" id="hechizos-grid"></div>
-    </section>
-
-    <!-- Tortas Clásicas Section -->
-    <section id="tortas" class="products-section">
-      <div class="section-header">
-        <span class="section-icon">🏰</span>
-        <h2 class="section-title">Tortas Clásicas de la Taberna</h2>
-        <p class="section-subtitle">Recetas ancestrales perfeccionadas</p>
-      </div>
-      <div class="products-grid" id="tortas-grid"></div>
-    </section>
-
-    <!-- Bombas & Brownie Section -->
-    <section id="bombas" class="products-section">
-      <div class="section-header">
-        <span class="section-icon">💣</span>
-        <h2 class="section-title">Bombas & Brownie</h2>
-        <p class="section-subtitle">Artefactos de chocolate puro</p>
-      </div>
-      <div class="products-grid" id="bombas-grid"></div>
-    </section>
-
-    <!-- Raciones del Viajero Section -->
-    <section id="raciones" class="products-section">
-      <div class="section-header">
-        <span class="section-icon">🧙</span>
-        <h2 class="section-title">Raciones del Viajero</h2>
-        <p class="section-subtitle">Sustento para tu journey</p>
-      </div>
-      <div class="products-grid" id="raciones-grid"></div>
-    </section>
-
-    <!-- Kits del Viajero Section -->
-    <section id="kits" class="products-section">
-      <div class="section-header">
-        <span class="section-icon">📦</span>
-        <h2 class="section-title">Kits del Viajero</h2>
-        <p class="section-subtitle">Equipamiento para Aventureros</p>
-      </div>
-      <div class="products-grid" id="kits-grid"></div>
-    </section>
+    </div>
   </main>
 
   <!-- Footer -->
@@ -163,7 +96,7 @@
     </div>
   </footer>
 
-  <!-- Modal de Producto (Estilo Libro/Pergamino) -->
+  <!-- Modal de Producto -->
   <div class="product-modal-overlay" id="modal-producto">
     <div class="product-modal-content">
       <button class="modal-close" id="modalClose" aria-label="Cerrar">&times;</button>
@@ -178,14 +111,13 @@
           <p id="modalDescription" class="modal-description"></p>
           <p id="modalPrice" class="modal-price"></p>
           <a id="modalWaBtn" href="#" class="modal-wa-btn" target="_blank" rel="noopener noreferrer">
-            <span class="wa-icon">⚗</span> Pedir al Alquimista
+            <span class="wa-icon">💬</span> Pedir al Alquimista
           </a>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Scripts -->
   <script src="script.js"></script>
 </body>
 
