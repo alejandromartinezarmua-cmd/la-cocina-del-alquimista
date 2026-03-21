@@ -86,7 +86,7 @@ function renderProducts() {
         : `<div class="product-image-container placeholder"><img src="caldero tapado.webp" loading="lazy" alt="Próximamente" class="product-image placeholder-img"></div>`;
         
       return `
-        <article class="product-card" onclick="openModal('${categoryKey}', ${index})">
+        <article class="product-card" onclick="verProducto('${categoryKey}', ${index})">
           <div class="product-card-decoration"></div>
           ${imageHtml}
           <div class="product-card-inner">
@@ -102,9 +102,9 @@ function renderProducts() {
 
 const defaultDesc = "Un antiguo secreto de la taberna, preparado con ingredientes místicos y amasado con paciencia. Seleccionado cuidadosamente de nuestro grimorio para deleitar el paladar de aventureros exigentes.";
 
-function openModal(category, index) {
+function verProducto(category, index) {
   const product = products[category][index];
-  const modal = document.getElementById('productModal');
+  const modal = document.getElementById('modal-producto');
   const imgEl = document.getElementById('modalImage');
   const titleEl = document.getElementById('modalTitle');
   const sizeEl = document.getElementById('modalSize');
@@ -128,7 +128,7 @@ function openModal(category, index) {
   }
   
   const phone = "5491160000000"; 
-  const message = encodeURIComponent(`¡Hola! Me interesa obtener más información sobre el producto: ${product.name}`);
+  const message = encodeURIComponent(`¡Hola! Me interesa invocar este producto del Grimorio: ${product.name}`);
   
   waBtn.href = "#"; // Evita saltos en la página
   waBtn.onclick = function(e) {
@@ -141,7 +141,7 @@ function openModal(category, index) {
 }
 
 function initModal() {
-  const modal = document.getElementById('productModal');
+  const modal = document.getElementById('modal-producto');
   const closeBtn = document.getElementById('modalClose');
   
   if (closeBtn) {
