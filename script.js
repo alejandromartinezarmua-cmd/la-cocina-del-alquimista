@@ -61,37 +61,104 @@ const products = {
 };
 
 // ========================================
-// RENDER PRODUCT CARDS
+// RENDER PRODUCT CARDS & MODAL LOGIC
 // ========================================
 
-function createProductCard(product) {
-  const price = product.price || product.size;
-  const size = product.price ? product.size : '';
+function renderProducts() {
+  const sections = {
+    'tartas-grid': 'tartas',
+    'hechizos-grid': 'hechizos',
+    'tortas-grid': 'tortas',
+    'bombas-grid': 'bombas',
+    'raciones-grid': 'raciones',
+    'kits-grid': 'kits'
+  };
   
-  const imageHtml = product.image 
-    ? `<div class="product-image-container"><img src="${product.image}" loading="lazy" alt="${product.name}" class="product-image"></div>`
-    : `<div class="product-image-container placeholder"><img src="caldero tapado.webp" loading="lazy" alt="Próximamente" class="product-image placeholder-img"></div>`;
-  
-  return `
-    <article class="product-card">
-      <div class="product-card-decoration"></div>
-      ${imageHtml}
-      <div class="product-card-inner">
-        <h3 class="product-name">${product.name}</h3>
-        ${size ? `<p class="product-size">${size}</p>` : ''}
-        ${price ? `<p class="product-price">${price}</p>` : ''}
-      </div>
-    </article>
-  `;
+  for (const [gridId, categoryKey] of Object.entries(sections)) {
+    const grid = document.getElementById(gridId);
+    if (!grid) continue;
+    
+    grid.innerHTML = products[categoryKey].map((product, index) => {
+      const price = product.price || product.size;
+      const size = product.price ? product.size : '';
+      const imageHtml = product.image 
+        ? `<div class="product-image-container"><img src="${product.image}" loading="lazy" alt="${product.name}" class="product-image"></div>`
+        : `<div class="product-image-container placeholder"><img src="caldero tapado.webp" loading="lazy" alt="Próximamente" class="product-image placeholder-img"></div>`;
+        
+      return `
+        <article class="product-card" onclick="openModal('${categoryKey}', ${index})">
+          <div class="product-card-decoration"></div>
+          ${imageHtml}
+          <div class="product-card-inner">
+            <h3 class="product-name">${product.name}</h3>
+            ${size ? `<p class="product-size">${size}</p>` : ''}
+            ${price ? `<p class="product-price">${price}</p>` : ''}
+          </div>
+        </article>
+      `;
+    }).join('');
+  }
 }
 
-function renderProducts() {
-  document.getElementById('tartas-grid').innerHTML = products.tartas.map(createProductCard).join('');
-  document.getElementById('hechizos-grid').innerHTML = products.hechizos.map(createProductCard).join('');
-  document.getElementById('tortas-grid').innerHTML = products.tortas.map(createProductCard).join('');
-  document.getElementById('bombas-grid').innerHTML = products.bombas.map(createProductCard).join('');
-  document.getElementById('raciones-grid').innerHTML = products.raciones.map(createProductCard).join('');
-  document.getElementById('kits-grid').innerHTML = products.kits.map(createProductCard).join('');
+const defaultDesc = "Un antiguo secreto de la taberna, preparado con ingredientes místicos y amasado con paciencia. Seleccionado cuidadosamente de nuestro grimorio para deleitar el paladar de aventureros exigentes.";
+
+function openModal(category, index) {
+  const product = products[category][index];
+  const modal = document.getElementById('productModal');
+  const imgEl = document.getElementById('modalImage');
+  const titleEl = document.getElementById('modalTitle');
+  const sizeEl = document.getElementById('modalSize');
+  const priceEl = document.getElementById('modalPrice');
+  const descEl = document.getElementById('modalDescription');
+  const waBtn = document.getElementById('modalWaBtn');
+  
+  titleEl.textContent = product.name;
+  sizeEl.textContent = product.size ? `Tamaño / Tipo: ${product.size}` : '';
+  priceEl.textContent = product.price || '';
+  descEl.textContent = product.desc || defaultDesc;
+  
+  if (product.image) {
+    imgEl.src = product.image;
+    imgEl.style.opacity = '1';
+    imgEl.classList.remove('placeholder-img');
+  } else {
+    imgEl.src = 'caldero tapado.webp';
+    imgEl.style.opacity = '0.5';
+    imgEl.classList.add('placeholder-img');
+  }
+  
+  const phone = "5491160000000"; 
+  const message = encodeURIComponent(`¡Hola! Me interesa obtener más información sobre el producto: ${product.name}`);
+  
+  waBtn.href = "#"; // Evita saltos en la página
+  waBtn.onclick = function(e) {
+    e.preventDefault();
+    window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${message}`, '_blank');
+  };
+  
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function initModal() {
+  const modal = document.getElementById('productModal');
+  const closeBtn = document.getElementById('modalClose');
+  
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  }
+  
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  }
 }
 
 // ========================================
@@ -394,6 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
   
   // Initialize all features
+  initModal();
   initParticles();
   initNavigation();
   initScrollReveal();
