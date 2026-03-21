@@ -852,21 +852,16 @@ body {
     background: #25D366; /* Verde sólido oscuro / rico */
   }
 
-  /* 4. Menú Superior: Distribución (Hamburguesa, Logo, WA) */
+  /* 4. Menú Superior: Distribución (Hamburguesa, Logo centrado) */
   .nav-container {
-    justify-content: space-between;
+    justify-content: center;
   }
   
   .nav-toggle {
     display: flex;
+    position: absolute;
+    left: 20px;
     z-index: 2001; /* Flotar siempre sobre el menú open */
-  }
-
-  .header-wa-btn {
-    display: flex;
-    align-items: center; justify-content: center;
-    cursor: pointer;
-    z-index: 1001;
   }
 
   .navbar {
