@@ -57,14 +57,13 @@ const allProducts = [
   { name: "Prueba del Aprendiz", size: "", price: "$200",  image: null, category: "panes", desc: "Un pequeño surtido para probar antes de encargar en grande." },
 
   // --- PASCUA ---
-  { name: "Rosca del Alquimista",        size: "Grande / Chica", price: "$1800 / $900", image: null, category: "pascua", desc: "Masa brioche con higos, crema y el secreto de la casa." },
-  { name: "Huevo de Alquimia 70%",       size: "Unidad",         price: "$1200",        image: null, category: "pascua", desc: "Cacao intenso con escamas de sal marina." },
-  { name: "Tarta de Vigilia",            size: "23cm",           price: "$1400",        image: null, category: "pascua", desc: "Atún premium y morrones asados en masa artesanal." },
-  { name: "Huevos Artesanales x3",       size: "3 unidades",     price: "$1200",        image: null, category: "pascua", desc: "Huevos de chocolate negro, blanco o mixtos. Rellenos con sorpresa y envueltos a mano. 🥚" },
-  { name: "Huevos Artesanales x6",       size: "6 unidades",     price: "$2200",        image: null, category: "pascua", desc: "La caja grande para regalar o darse un gusto doble. 🍫" },
-  { name: "Empanadas de Vigilia x6",     size: "6 unidades",     price: "$900",         image: null, category: "pascua", desc: "Rellenas de atún, cebolla caramelizada y aceitunas. La tradición en formato artesanal. 🌿" },
-  { name: "Empanadas de Vigilia x12",    size: "12 unidades",    price: "$1700",        image: null, category: "pascua", desc: "La docena para toda la mesa. Masa casera y relleno generoso." },
-  { name: "Combo Pascua",                size: "Rosca + 6 Huevos",price: "$2800",       image: null, category: "pascua", desc: "La rosca grande y seis huevos artesanales. El regalo perfecto de Pascua. 🐣" }
+  { name: "Mini Huevitos (Pociones Dulces)", size: "6 / 12 / 24 unid.", price: "$220 / $380 / $700", image: null, category: "pascua", desc: "Rellenos: Ganache, dulce de leche, Marroc y Kinder. ¡Producción limitada!" },
+  { name: "Huevos Encantados (12 cm)",       size: "Unidad",            price: "$450",               image: null, category: "pascua", desc: "Huevos con sorpresa: Rocklets, gomitas o mini huevitos." },
+  { name: "Rituales Dulces (Mitades)",       size: "Oreo / Brownie",    price: "$550",               image: null, category: "pascua", desc: "Mitades rellenas clásicas con ganache." },
+  { name: "Rituales Dulces Premium",         size: "Kinder/Marroc/Franui", price: "$650",            image: null, category: "pascua", desc: "Mitades rellenas premium." },
+  { name: "Box Encantada",                   size: "Sorpresa + 6 o 12 mini", price: "$650 / $800",   image: null, category: "pascua", desc: "Huevo con sorpresa especial y mini huevitos." },
+  { name: "Box Ritual Clásica",              size: "Relleno + 6 o 12 mini", price: "$800 / $950",    image: null, category: "pascua", desc: "Huevo relleno clásico acompañado de mini huevitos. ¡Producción limitada!" },
+  { name: "Box Ritual Premium",              size: "Relleno + 6 o 12 mini", price: "$900 / $1050",   image: null, category: "pascua", desc: "Huevo relleno premium acompañado de mini huevitos. ¡Producción limitada!" }
 ];
 
 // ========================================
