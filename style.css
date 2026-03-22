@@ -178,6 +178,7 @@ body {
   border-top: 1px solid var(--gold);
   padding: 8px 16px;
   width: 100%;
+  font-family: var(--font-body);
 }
 .info-sticky-content {
   max-width: 1200px;
@@ -369,7 +370,7 @@ body {
 .main-content {
   position: relative;
   z-index: 1;
-  padding-top: 20px;
+  padding-top: 80px; /* Compensación para la info-sticky */
 }
 .catalog-container {
   max-width: 1200px;
