@@ -169,11 +169,13 @@ body {
    INFORMACIÓN IMPORTANTE (FOOTER)
    ======================================== */
 .info-footer {
-  background-color: #141414;
-  color: #f5f5f5;
+  background-color: var(--black-soft);
+  color: var(--white);
   padding: 60px 20px;
-  border-top: 2px solid #d4af37;
+  border-top: 2px solid var(--gold);
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 .info-grid {
   display: flex;
@@ -181,6 +183,9 @@ body {
   justify-content: center;
   gap: 30px;
   margin-top: 30px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .info-item {
   flex: 1;
@@ -188,13 +193,14 @@ body {
   max-width: 350px;
 }
 .info-item h3 {
-  color: #d4af37;
+  color: var(--gold);
   margin-bottom: 10px;
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
 }
 .info-item p {
-  font-family: 'Lato', sans-serif;
-  line-height: 1.6;
+  font-family: var(--font-body);
+  opacity: 0.9;
 }
 #guia-compra { scroll-margin-top: 100px; }
 
