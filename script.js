@@ -95,7 +95,6 @@ function renderProducts() {
       </article>
     `;
   }).join('');
-
   // Add event listeners (avoids VS Code inline onclick template literal errors)
   grid.querySelectorAll('.product-card').forEach(card => {
     card.addEventListener('click', () => {
